@@ -58,14 +58,11 @@ export default function Router() {
       <Stack.Screen
         name="Petunjuk"
         component={Petunjuk}
-        options={{
-          headerShown: true,
-          headerTitle: 'Petunjuk Penggunaan',
-          headerStyle: {
+        options={({ route }) => ({
+          title: route.params.name, headerStyle: {
             backgroundColor: colors.primary,
-          },
-          headerTintColor: '#fff',
-        }}
+          }, headerTintColor: '#fff',
+        })}
       />
 
 

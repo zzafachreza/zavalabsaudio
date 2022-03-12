@@ -30,7 +30,7 @@ export default function ({ navigation }) {
 
       // post API
 
-      // setLoading(true);
+      setLoading(true);
 
       console.log(kirim);
 

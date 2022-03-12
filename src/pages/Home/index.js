@@ -1,8 +1,8 @@
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View, Image } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { getData, storeData } from '../../utils/localStorage';
-import { colors, fonts, windowWidth } from '../../utils';
+import { colors, fonts, windowHeight, windowWidth } from '../../utils';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
@@ -54,12 +54,17 @@ var whoosh$23 = new Sound('https://zavalabs.com/islamic/Materi%2023.mp3', Sound.
 var whoosh$24 = new Sound('https://zavalabs.com/islamic/Materi%2024.mp3', Sound.MAIN_BUNDLE).release();
 
 
-export default function Home() {
+export default function Home({ navigation }) {
 
   const [user, setUser] = useState({});
   // const [play, setPlay] = useState(false);
 
-  const [nol, setNol] = useState({})
+  const [nol, setNol] = useState({
+    play: false,
+    url: 'https://zavalabs.com/islamic/pendahuluan.mp3',
+    nama: 'PENDAHULUAN',
+    status: 'OPEN',
+  })
   const [$1, set$1] = useState({});
   const [$2, set$2] = useState({});
   const [$3, set$3] = useState({});
@@ -111,7 +116,7 @@ export default function Home() {
         storeData('$1', {
           play: false,
           url: 'https://zavalabs.com/islamic/Materi%201.mp3',
-          nama: 'MATERI 1',
+          nama: 'JAM 01',
           status: 'CLOSE',
         })
       } else {
@@ -127,7 +132,7 @@ export default function Home() {
         storeData('$2', {
           play: false,
           url: 'https://zavalabs.com/islamic/Materi%201.mp3',
-          nama: 'MATERI 2',
+          nama: 'JAM 02',
           status: 'CLOSE',
         })
       } else {
@@ -142,7 +147,7 @@ export default function Home() {
         storeData('$3', {
           play: false,
           url: 'https://zavalabs.com/islamic/Materi%203.mp3',
-          nama: 'MATERI 3',
+          nama: 'JAM 03',
           status: 'CLOSE',
         })
       } else {
@@ -151,40 +156,61 @@ export default function Home() {
 
     })
 
-    getData('$4').then($4 => { if (!$4) { storeData('$4', { play: false, url: 'https://zavalabs.com/islamic/Materi%204.mp3', nama: 'MATERI 4', status: 'CLOSE', }) } else { set$4($4); } })
-    getData('$5').then($5 => { if (!$5) { storeData('$5', { play: false, url: 'https://zavalabs.com/islamic/Materi%205.mp3', nama: 'MATERI 5', status: 'CLOSE', }) } else { set$5($5); } })
-    getData('$6').then($6 => { if (!$6) { storeData('$6', { play: false, url: 'https://zavalabs.com/islamic/Materi%206.mp3', nama: 'MATERI 6', status: 'CLOSE', }) } else { set$6($6); } })
-    getData('$7').then($7 => { if (!$7) { storeData('$7', { play: false, url: 'https://zavalabs.com/islamic/Materi%207.mp3', nama: 'MATERI 7', status: 'CLOSE', }) } else { set$7($7); } })
-    getData('$8').then($8 => { if (!$8) { storeData('$8', { play: false, url: 'https://zavalabs.com/islamic/Materi%208.mp3', nama: 'MATERI 8', status: 'CLOSE', }) } else { set$8($8); } })
-    getData('$9').then($9 => { if (!$9) { storeData('$9', { play: false, url: 'https://zavalabs.com/islamic/Materi%209.mp3', nama: 'MATERI 9', status: 'CLOSE', }) } else { set$9($9); } })
-    getData('$10').then($10 => { if (!$10) { storeData('$10', { play: false, url: 'https://zavalabs.com/islamic/Materi%2010.mp3', nama: 'MATERI 10', status: 'CLOSE', }) } else { set$10($10); } })
-    getData('$11').then($11 => { if (!$11) { storeData('$11', { play: false, url: 'https://zavalabs.com/islamic/Materi%2011.mp3', nama: 'MATERI 11', status: 'CLOSE', }) } else { set$11($11); } })
-    getData('$12').then($12 => { if (!$12) { storeData('$12', { play: false, url: 'https://zavalabs.com/islamic/Materi%2012.mp3', nama: 'MATERI 12', status: 'CLOSE', }) } else { set$12($12); } })
-    getData('$13').then($13 => { if (!$13) { storeData('$13', { play: false, url: 'https://zavalabs.com/islamic/Materi%2013.mp3', nama: 'MATERI 13', status: 'CLOSE', }) } else { set$13($13); } })
-    getData('$14').then($14 => { if (!$14) { storeData('$14', { play: false, url: 'https://zavalabs.com/islamic/Materi%2014.mp3', nama: 'MATERI 14', status: 'CLOSE', }) } else { set$14($14); } })
-    getData('$15').then($15 => { if (!$15) { storeData('$15', { play: false, url: 'https://zavalabs.com/islamic/Materi%2015.mp3', nama: 'MATERI 15', status: 'CLOSE', }) } else { set$15($15); } })
-    getData('$16').then($16 => { if (!$16) { storeData('$16', { play: false, url: 'https://zavalabs.com/islamic/Materi%2016.mp3', nama: 'MATERI 16', status: 'CLOSE', }) } else { set$16($16); } })
-    getData('$17').then($17 => { if (!$17) { storeData('$17', { play: false, url: 'https://zavalabs.com/islamic/Materi%2017.mp3', nama: 'MATERI 17', status: 'CLOSE', }) } else { set$17($17); } })
-    getData('$18').then($18 => { if (!$18) { storeData('$18', { play: false, url: 'https://zavalabs.com/islamic/Materi%2018.mp3', nama: 'MATERI 18', status: 'CLOSE', }) } else { set$18($18); } })
-    getData('$19').then($19 => { if (!$19) { storeData('$19', { play: false, url: 'https://zavalabs.com/islamic/Materi%2019.mp3', nama: 'MATERI 19', status: 'CLOSE', }) } else { set$19($19); } })
-    getData('$20').then($20 => { if (!$20) { storeData('$20', { play: false, url: 'https://zavalabs.com/islamic/Materi%2020.mp3', nama: 'MATERI 20', status: 'CLOSE', }) } else { set$20($20); } })
-    getData('$21').then($21 => { if (!$21) { storeData('$21', { play: false, url: 'https://zavalabs.com/islamic/Materi%2021.mp3', nama: 'MATERI 21', status: 'CLOSE', }) } else { set$21($21); } })
-    getData('$22').then($22 => { if (!$22) { storeData('$22', { play: false, url: 'https://zavalabs.com/islamic/Materi%2022.mp3', nama: 'MATERI 22', status: 'CLOSE', }) } else { set$22($22); } })
-    getData('$23').then($23 => { if (!$23) { storeData('$23', { play: false, url: 'https://zavalabs.com/islamic/Materi%2023.mp3', nama: 'MATERI 23', status: 'CLOSE', }) } else { set$23($23); } })
-    getData('$24').then($24 => { if (!$24) { storeData('$24', { play: false, url: 'https://zavalabs.com/islamic/Materi%2024.mp3', nama: 'MATERI 24', status: 'CLOSE', }) } else { set$24($24); } })
+    getData('$4').then($4 => { if (!$4) { storeData('$4', { play: false, url: 'https://zavalabs.com/islamic/Materi%204.mp3', nama: 'JAM 04', status: 'CLOSE', }) } else { set$4($4); } })
+    getData('$5').then($5 => { if (!$5) { storeData('$5', { play: false, url: 'https://zavalabs.com/islamic/Materi%205.mp3', nama: 'JAM 05', status: 'CLOSE', }) } else { set$5($5); } })
+    getData('$6').then($6 => { if (!$6) { storeData('$6', { play: false, url: 'https://zavalabs.com/islamic/Materi%206.mp3', nama: 'JAM 06', status: 'CLOSE', }) } else { set$6($6); } })
+    getData('$7').then($7 => { if (!$7) { storeData('$7', { play: false, url: 'https://zavalabs.com/islamic/Materi%207.mp3', nama: 'JAM 07', status: 'CLOSE', }) } else { set$7($7); } })
+    getData('$8').then($8 => { if (!$8) { storeData('$8', { play: false, url: 'https://zavalabs.com/islamic/Materi%208.mp3', nama: 'JAM 08', status: 'CLOSE', }) } else { set$8($8); } })
+    getData('$9').then($9 => { if (!$9) { storeData('$9', { play: false, url: 'https://zavalabs.com/islamic/Materi%209.mp3', nama: 'JAM 09', status: 'CLOSE', }) } else { set$9($9); } })
+    getData('$10').then($10 => { if (!$10) { storeData('$10', { play: false, url: 'https://zavalabs.com/islamic/Materi%2010.mp3', nama: 'JAM 10', status: 'CLOSE', }) } else { set$10($10); } })
+    getData('$11').then($11 => { if (!$11) { storeData('$11', { play: false, url: 'https://zavalabs.com/islamic/Materi%2011.mp3', nama: 'JAM 11', status: 'CLOSE', }) } else { set$11($11); } })
+    getData('$12').then($12 => { if (!$12) { storeData('$12', { play: false, url: 'https://zavalabs.com/islamic/Materi%2012.mp3', nama: 'JAM 12', status: 'CLOSE', }) } else { set$12($12); } })
+    getData('$13').then($13 => { if (!$13) { storeData('$13', { play: false, url: 'https://zavalabs.com/islamic/Materi%2013.mp3', nama: 'JAM 13', status: 'CLOSE', }) } else { set$13($13); } })
+    getData('$14').then($14 => { if (!$14) { storeData('$14', { play: false, url: 'https://zavalabs.com/islamic/Materi%2014.mp3', nama: 'JAM 14', status: 'CLOSE', }) } else { set$14($14); } })
+    getData('$15').then($15 => { if (!$15) { storeData('$15', { play: false, url: 'https://zavalabs.com/islamic/Materi%2015.mp3', nama: 'JAM 15', status: 'CLOSE', }) } else { set$15($15); } })
+    getData('$16').then($16 => { if (!$16) { storeData('$16', { play: false, url: 'https://zavalabs.com/islamic/Materi%2016.mp3', nama: 'JAM 16', status: 'CLOSE', }) } else { set$16($16); } })
+    getData('$17').then($17 => { if (!$17) { storeData('$17', { play: false, url: 'https://zavalabs.com/islamic/Materi%2017.mp3', nama: 'JAM 17', status: 'CLOSE', }) } else { set$17($17); } })
+    getData('$18').then($18 => { if (!$18) { storeData('$18', { play: false, url: 'https://zavalabs.com/islamic/Materi%2018.mp3', nama: 'JAM 18', status: 'CLOSE', }) } else { set$18($18); } })
+    getData('$19').then($19 => { if (!$19) { storeData('$19', { play: false, url: 'https://zavalabs.com/islamic/Materi%2019.mp3', nama: 'JAM 19', status: 'CLOSE', }) } else { set$19($19); } })
+    getData('$20').then($20 => { if (!$20) { storeData('$20', { play: false, url: 'https://zavalabs.com/islamic/Materi%2020.mp3', nama: 'JAM 20', status: 'CLOSE', }) } else { set$20($20); } })
+    getData('$21').then($21 => { if (!$21) { storeData('$21', { play: false, url: 'https://zavalabs.com/islamic/Materi%2021.mp3', nama: 'JAM 21', status: 'CLOSE', }) } else { set$21($21); } })
+    getData('$22').then($22 => { if (!$22) { storeData('$22', { play: false, url: 'https://zavalabs.com/islamic/Materi%2022.mp3', nama: 'JAM 22', status: 'CLOSE', }) } else { set$22($22); } })
+    getData('$23').then($23 => { if (!$23) { storeData('$23', { play: false, url: 'https://zavalabs.com/islamic/Materi%2023.mp3', nama: 'JAM 23', status: 'CLOSE', }) } else { set$23($23); } })
+    getData('$24').then($24 => { if (!$24) { storeData('$24', { play: false, url: 'https://zavalabs.com/islamic/Materi%2024.mp3', nama: 'JAM 24', status: 'CLOSE', }) } else { set$24($24); } })
 
 
 
   }, [])
 
-
+  const [buka, setBuka] = useState(false);
 
 
 
   return (
     <SafeAreaView style={{
       flex: 1,
+      position: 'relative'
     }}>
+      {buka &&
+        <View style={{
+        }}>
+          <TouchableOpacity onPress={() => setBuka(false)
+          } style={{
+            backgroundColor: colors.secondary,
+            padding: 20,
+            justifyContent: 'flex-end',
+            alignItems: 'center'
+          }}><Text style={{
+            fontFamily: fonts.secondary[600],
+            fontSize: windowWidth / 25,
+            color: colors.primary
+          }}>CLOSE</Text></TouchableOpacity>
+          <Image source={require('../../assets/poster.png')} style={{
+            width: windowWidth,
+            height: windowHeight
+          }} />
+        </View>
+      }
       <View style={{
         backgroundColor: colors.primary,
         paddingHorizontal: 10,
@@ -192,19 +218,15 @@ export default function Home() {
       }}>
         <Text style={{
           fontFamily: fonts.secondary[600],
-          fontSize: windowWidth / 20,
+          fontSize: windowWidth / 25,
           color: colors.white
         }}>Asslamu'alikum, {user.username}</Text>
         <Text style={{
           fontFamily: fonts.secondary[400],
-          fontSize: windowWidth / 20,
+          fontSize: windowWidth / 25,
           color: colors.white
-        }}>Selamat datang di aplikasi </Text>
-        <Text style={{
-          fontFamily: fonts.secondary[600],
-          fontSize: windowWidth / 20,
-          color: colors.secondary,
-        }}> Find Out Rasulullah Habits</Text>
+        }}>Selamat datang di kajian online Find Out Rasulullah Habits. Untuk dapat menerima materi selanjutnya, Anda diharuskan mendengarkan materi sebelumnya hingga tuntas lalu klik selesai.</Text>
+
       </View>
       <ScrollView >
         {/* pendahuluan */}
@@ -302,7 +324,7 @@ export default function Home() {
         {/* pendahuluan */}
 
 
-        {/* materi 1 */}
+        {/* JAM 01 */}
 
         <View style={{
           flexDirection: 'row',
@@ -379,7 +401,7 @@ export default function Home() {
                         storeData('$1', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%201.mp3',
-                          nama: 'MATERI 1',
+                          nama: 'JAM 01',
                           status: 'DONE',
                         })
 
@@ -397,9 +419,9 @@ export default function Home() {
         </View>
 
 
-        {/* materi 1 */}
+        {/* JAM 01 */}
 
-        {/* materi 2 */}
+        {/* JAM 02 */}
 
         <View style={{
           flexDirection: 'row',
@@ -411,19 +433,9 @@ export default function Home() {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$2.play) {
-              set$2({
-                ...$2,
-                play: true
-              });
-              whoosh2.play();
-            } else {
-              set$2({
-                ...$2,
-                play: false
-              })
-              whoosh2.pause();
-            }
+            navigation.navigate('Petunjuk', {
+              jam: 2
+            })
           }} style={{
             padding: 10,
             backgroundColor: $2.status == "OPEN" ? colors.primary : $2.status == "DONE" ? colors.success : 'gray',
@@ -477,7 +489,7 @@ export default function Home() {
                         storeData('$2', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%201.mp3',
-                          nama: 'MATERI 2',
+                          nama: 'JAM 02',
                           status: 'DONE',
                         })
 
@@ -493,10 +505,10 @@ export default function Home() {
             </TouchableOpacity>
           }
         </View>
-        {/* materi 2 */}
+        {/* JAM 02 */}
 
 
-        {/* materi 3 */}
+        {/* JAM 03 */}
         <View style={{
           flexDirection: 'row',
           padding: 10,
@@ -573,7 +585,7 @@ export default function Home() {
                         storeData('$3', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%203.mp3',
-                          nama: 'MATERI 3',
+                          nama: 'JAM 03',
                           status: 'DONE',
                         })
 
@@ -589,9 +601,9 @@ export default function Home() {
             </TouchableOpacity>
           }
         </View>
-        {/* materi 3 */}
+        {/* JAM 03 */}
 
-        {/* materi 4 */}
+        {/* JAM 04 */}
         <View style={{
           flexDirection: 'row',
           padding: 10,
@@ -668,7 +680,7 @@ export default function Home() {
                         storeData('$4', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%204.mp3',
-                          nama: 'MATERI 4',
+                          nama: 'JAM 04',
                           status: 'DONE',
                         })
 
@@ -684,9 +696,9 @@ export default function Home() {
             </TouchableOpacity>
           }
         </View>
-        {/* materi 4*/}
+        {/* JAM 04*/}
 
-        {/* materi 5 */}
+        {/* JAM 05 */}
         <View style={{
           flexDirection: 'row',
           padding: 10,
@@ -763,7 +775,7 @@ export default function Home() {
                         storeData('$5', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%205.mp3',
-                          nama: 'MATERI 5',
+                          nama: 'JAM 05',
                           status: 'DONE',
                         })
 
@@ -779,7 +791,7 @@ export default function Home() {
             </TouchableOpacity>
           }
         </View>
-        {/* materi 5*/}
+        {/* JAM 05*/}
 
         {/* materi $6 */}
         <View style={{
@@ -792,19 +804,9 @@ export default function Home() {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$6.play) {
-              set$6({
-                ...$6,
-                play: true
-              });
-              whoosh6.play();
-            } else {
-              set$6({
-                ...$6,
-                play: false
-              })
-              whoosh6.pause();
-            }
+            navigation.navigate('Petunjuk', {
+              jam: 6
+            })
           }} style={{
             padding: 10,
             backgroundColor: $6.status == "OPEN" ? colors.primary : $6.status == "DONE" ? colors.success : 'gray',
@@ -858,7 +860,7 @@ export default function Home() {
                         storeData('$6', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%206.mp3',
-                          nama: 'MATERI 6',
+                          nama: 'JAM 06',
                           status: 'DONE',
                         })
 
@@ -953,7 +955,7 @@ export default function Home() {
                         storeData('$7', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%207.mp3',
-                          nama: 'MATERI 7',
+                          nama: 'JAM 07',
                           status: 'DONE',
                         })
 
@@ -1048,7 +1050,7 @@ export default function Home() {
                         storeData('$8', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%208.mp3',
-                          nama: 'MATERI 8',
+                          nama: 'JAM 08',
                           status: 'DONE',
                         })
 
@@ -1143,7 +1145,7 @@ export default function Home() {
                         storeData('$9', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%209.mp3',
-                          nama: 'MATERI 9',
+                          nama: 'JAM 09',
                           status: 'DONE',
                         })
 
@@ -1171,19 +1173,9 @@ export default function Home() {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$10.play) {
-              set$10({
-                ...$10,
-                play: true
-              });
-              whoosh$10.play();
-            } else {
-              set$10({
-                ...$10,
-                play: false
-              })
-              whoosh$10.pause();
-            }
+            navigation.navigate('Petunjuk', {
+              jam: 10
+            })
           }} style={{
             padding: 10,
             backgroundColor: $10.status == "OPEN" ? colors.primary : $10.status == "DONE" ? colors.success : 'gray',
@@ -1210,8 +1202,8 @@ export default function Home() {
 
               <Text onPress={() => {
                 Alert.alert(
-                  "Alhamdulillah",
-                  "Saya sudah mendengarkan materi ini, insyaAllah siap menerima materi berikutnya",
+                  "Selamat",
+                  "karena Anda sudah istiqamah mengikuti materi hingga sejauh ini. Kami telah menyiapkan ebook istimewa karya Ustadz Arafat gratis untuk Anda. Silakan menghubungi admin kajian online melalui whatsapp.",
                   [
                     {
                       text: "TIDAK",
@@ -1237,7 +1229,7 @@ export default function Home() {
                         storeData('$10', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2010.mp3',
-                          nama: 'MATERI 10',
+                          nama: 'JAM 10',
                           status: 'DONE',
                         })
 
@@ -1331,7 +1323,7 @@ export default function Home() {
                         storeData('$11', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2011.mp3',
-                          nama: 'MATERI 11',
+                          nama: 'JAM 11',
                           status: 'DONE',
                         })
 
@@ -1426,7 +1418,7 @@ export default function Home() {
                         storeData('$12', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2012.mp3',
-                          nama: 'MATERI 12',
+                          nama: 'JAM 12',
                           status: 'DONE',
                         })
 
@@ -1521,7 +1513,7 @@ export default function Home() {
                         storeData('$13', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2013.mp3',
-                          nama: 'MATERI 13',
+                          nama: 'JAM 13',
                           status: 'DONE',
                         })
 
@@ -1615,7 +1607,7 @@ export default function Home() {
                         storeData('$14', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2014.mp3',
-                          nama: 'MATERI 14',
+                          nama: 'JAM 14',
                           status: 'DONE',
                         })
 
@@ -1709,7 +1701,7 @@ export default function Home() {
                         storeData('$15', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2015.mp3',
-                          nama: 'MATERI 15',
+                          nama: 'JAM 15',
                           status: 'DONE',
                         })
 
@@ -1803,7 +1795,7 @@ export default function Home() {
                         storeData('$16', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2016.mp3',
-                          nama: 'MATERI 16',
+                          nama: 'JAM 16',
                           status: 'DONE',
                         })
 
@@ -1897,7 +1889,7 @@ export default function Home() {
                         storeData('$17', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2017.mp3',
-                          nama: 'MATERI 17',
+                          nama: 'JAM 17',
                           status: 'DONE',
                         })
 
@@ -1991,7 +1983,7 @@ export default function Home() {
                         storeData('$18', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2018.mp3',
-                          nama: 'MATERI 18',
+                          nama: 'JAM 18',
                           status: 'DONE',
                         })
 
@@ -2086,7 +2078,7 @@ export default function Home() {
                         storeData('$19', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2019.mp3',
-                          nama: 'MATERI 19',
+                          nama: 'JAM 19',
                           status: 'DONE',
                         })
 
@@ -2154,8 +2146,8 @@ export default function Home() {
 
               <Text onPress={() => {
                 Alert.alert(
-                  "Alhamdulillah",
-                  "Saya sudah mendengarkan materi ini, insyaAllah siap menerima materi berikutnya",
+                  "Selamat",
+                  "karena sebentar lagi Anda akan menyelesaikan materi ini hingga tuntas. Kami telah menyiapkan video eksklusif dari Ustadz Arafat gratis untuk Anda. Silakan menghubungi admin kajian online melalui whatsapp.",
                   [
                     {
                       text: "TIDAK",
@@ -2181,7 +2173,7 @@ export default function Home() {
                         storeData('$20', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2020.mp3',
-                          nama: 'MATERI 20',
+                          nama: 'JAM 20',
                           status: 'DONE',
                         })
 
@@ -2275,7 +2267,7 @@ export default function Home() {
                         storeData('$21', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2021.mp3',
-                          nama: 'MATERI 21',
+                          nama: 'JAM 21',
                           status: 'DONE',
                         })
 
@@ -2369,7 +2361,7 @@ export default function Home() {
                         storeData('$22', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2022.mp3',
-                          nama: 'MATERI 22',
+                          nama: 'JAM 22',
                           status: 'DONE',
                         })
 
@@ -2463,7 +2455,7 @@ export default function Home() {
                         storeData('$23', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2023.mp3',
-                          nama: 'MATERI 23',
+                          nama: 'JAM 23',
                           status: 'DONE',
                         })
 
@@ -2521,7 +2513,7 @@ export default function Home() {
           }}>
             {$24.nama}
           </Text>
-          {$24.status == "OPEN" &&
+          {$24.status != "CLOSE" &&
             <TouchableOpacity style={{
               padding: 10,
               backgroundColor: colors.secondary,
@@ -2530,19 +2522,19 @@ export default function Home() {
 
               <Text onPress={() => {
                 Alert.alert(
-                  "Alhamdulillah",
-                  "Saya sudah mendengarkan materi ini, insyaAllah siap menerima materi berikutnya",
+                  "Jazakumullah Khair",
+                  "Suatu kehormatan bagi kami bisa membersamai Anda hingga materi terakhir. Khusus bagi Anda yang masih bersemangat, Alhamdulillah! Karena ada cerita-cerita tentang Rasulullah menunggu dalam kajian lanjutan di sesi berikutnya. Silakan menghubungi admin kajian online melalui whatsapp.",
                   [
+                    // {
+                    //   text: "TIDAK",
+                    //   onPress: () => console.log("Cancel Pressed"),
+                    //   style: "cancel"
+                    // },
                     {
-                      text: "TIDAK",
-                      onPress: () => console.log("Cancel Pressed"),
-                      style: "cancel"
-                    },
-                    {
-                      text: "YA", onPress: () => {
+                      text: "OK", onPress: () => {
 
                         //   untuk jenis yang next nya 
-
+                        setBuka(true);
                         set$24({
                           ...$24,
                           status: 'DONE'
@@ -2550,7 +2542,7 @@ export default function Home() {
                         storeData('$24', {
                           play: false,
                           url: 'https://zavalabs.com/islamic/Materi%2024.mp3',
-                          nama: 'MATERI 24',
+                          nama: 'JAM 24',
                           status: 'DONE',
                         })
 
@@ -2562,13 +2554,30 @@ export default function Home() {
                 fontFamily: fonts.secondary[600],
                 fontSize: windowWidth / 20,
                 color: colors.primary
-              }}>Selesai</Text>
+              }}>KAJIAN LANJUTAN</Text>
             </TouchableOpacity>
           }
         </View>
         {/* materi $24*/}
 
       </ScrollView>
+      <TouchableOpacity onPress={() => {
+        Alert.alert('Rasulullah Habits', 'Kami senang jika Anda mau menyapa kami. Sampaikan pertanyaan Anda melalui whatsapp berikut ini: 089-89-123-123')
+      }} style={{
+        flexDirection: 'row',
+        padding: 10,
+        backgroundColor: colors.secondary,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <Icon type="ionicon" name="help-circle" color={colors.primary} />
+        <Text style={{
+          fontFamily: fonts.secondary[600],
+          fontSize: windowWidth / 20,
+          left: 10,
+          color: colors.primary
+        }}>Bantuan</Text>
+      </TouchableOpacity>
     </SafeAreaView >
   )
 }
