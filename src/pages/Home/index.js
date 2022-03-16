@@ -193,6 +193,7 @@ export default function Home({ navigation }) {
     }}>
       {buka &&
         <View style={{
+          padding: 5
         }}>
           <TouchableOpacity onPress={() => setBuka(false)
           } style={{
@@ -206,8 +207,10 @@ export default function Home({ navigation }) {
             color: colors.primary
           }}>CLOSE</Text></TouchableOpacity>
           <Image source={require('../../assets/poster.png')} style={{
-            width: windowWidth,
-            height: windowHeight
+            width: '100%',
+            height: windowHeight,
+            resizeMode: 'contain',
+            // aspectRatio: 1,
           }} />
         </View>
       }
@@ -220,7 +223,7 @@ export default function Home({ navigation }) {
           fontFamily: fonts.secondary[600],
           fontSize: windowWidth / 25,
           color: colors.white
-        }}>Asslamu'alikum, {user.username}</Text>
+        }}>Assalamualaikum {user.username}</Text>
         <Text style={{
           fontFamily: fonts.secondary[400],
           fontSize: windowWidth / 25,

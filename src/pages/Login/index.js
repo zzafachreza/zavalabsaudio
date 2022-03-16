@@ -36,7 +36,7 @@ export default function ({ navigation }) {
 
 
 
-      if (kirim.password !== '123') {
+      if (kirim.password !== '571') {
 
         setTimeout(() => {
           setLoading(false);
@@ -67,17 +67,14 @@ export default function ({ navigation }) {
 
   return (
     <ScrollView style={{ padding: 10, flex: 1 }}>
-      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5, paddingTop: 50 }}>
         <Text style={{
-          fontSize: windowWidth / 10,
-          fontFamily: fonts.primary[600],
+          fontSize: windowWidth / 20,
+          fontFamily: fonts.primary[400],
+          textAlign: 'center',
           color: colors.primary
-        }}>Find Out</Text>
-        <Text style={{
-          fontSize: windowWidth / 10,
-          fontFamily: fonts.primary[600],
-          color: colors.primary
-        }}>Rasulullah Habits</Text>
+        }}>Kajian online ini tidak dikenakan biaya apapun. Jika Anda belum memiliki password, silakan menghubungi admin yang akan membantu Anda mendapatkannya secara gratis.</Text>
+
 
       </View>
       <MyGap jarak={40} />
