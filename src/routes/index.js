@@ -24,6 +24,7 @@ import {
   MenuPendidikanAdd,
   MenuPelatihanAdd,
   Petunjuk,
+  Register,
 } from '../pages';
 import { colors } from '../utils';
 import MenuPengalamanAdd from '../pages/MenuPengalamanAdd';
@@ -48,6 +49,19 @@ export default function Router() {
         options={{
           headerShown: false,
           // headerTitle: 'Detail',
+          headerStyle: {
+            backgroundColor: colors.primary,
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          headerShown: true,
+          headerTitle: 'Register',
           headerStyle: {
             backgroundColor: colors.primary,
           },

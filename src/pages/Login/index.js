@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { fonts, windowWidth, colors } from '../../utils';
 import { MyInput, MyGap, MyButton } from '../../components';
 import axios from 'axios';
@@ -28,34 +28,24 @@ export default function ({ navigation }) {
     } else {
 
 
-      // post API
-
       setLoading(true);
-
       console.log(kirim);
+      setTimeout(() => {
+        axios
+          .post('https://zavalabs.com/islamic/login.php', kirim)
+          .then(res => {
+            console.log(res.data);
+            setLoading(false);
+            if (res.data.kode == 50) {
 
+              alert(res.data.msg);
 
-
-      if (kirim.password !== '571') {
-
-        setTimeout(() => {
-          setLoading(false);
-          alert('Maaf Pasword Anda Salah !');
-        }, 1200)
-
-
-
-      } else {
-        // alert('success');
-        storeData('user', {
-          username: kirim.username
-        });
-
-        setTimeout(() => {
-          navigation.replace('Home')
-        }, 800)
-
-      }
+            } else {
+              storeData('user', res.data);
+              navigation.replace('Home');
+            }
+          });
+      }, 1200);
 
 
     }
@@ -69,11 +59,11 @@ export default function ({ navigation }) {
     <ScrollView style={{ padding: 10, flex: 1 }}>
       <View style={{ justifyContent: 'center', alignItems: 'center', paddingHorizontal: 5, paddingTop: 50 }}>
         <Text style={{
-          fontSize: windowWidth / 20,
-          fontFamily: fonts.primary[400],
+          fontSize: windowWidth / 10,
+          fontFamily: fonts.primary[600],
           textAlign: 'center',
           color: colors.primary
-        }}>Kajian online ini tidak dikenakan biaya apapun. Jika Anda belum memiliki password, silakan menghubungi admin yang akan membantu Anda mendapatkannya secara gratis.</Text>
+        }}>FIND OUT RASULULLAH HABITS</Text>
 
 
       </View>
@@ -104,6 +94,17 @@ export default function ({ navigation }) {
           warna={colors.primary}
           Icons="log-in-outline"
         />}
+
+        <TouchableOpacity onPress={() => navigation.navigate('Register')} style={{
+          padding: 10,
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}><Text style={{
+          fontSize: windowWidth / 25,
+          fontFamily: fonts.primary[400],
+          textAlign: 'center',
+          color: colors.black
+        }}>Belum punya user ? silahkan daftar disini</Text></TouchableOpacity>
       </View>
       {loading && <View style={{
         flex: 1,

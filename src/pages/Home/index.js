@@ -4,8 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { getData, storeData } from '../../utils/localStorage';
 import { colors, fonts, windowHeight, windowWidth } from '../../utils';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import AwesomeAlert from 'react-native-awesome-alerts';
-
+import { showMessage } from 'react-native-flash-message';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
 
@@ -243,25 +242,38 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!nol.play) {
-              setNol({
-                ...nol,
-                play: true
-              });
-              whoosh.play();
+
+            if (nol.status == "OPEN" || nol.status == "DONE") {
+              if (!nol.play) {
+                setNol({
+                  ...nol,
+                  play: true
+                });
+                whoosh.play();
+              } else {
+                setNol({
+                  ...nol,
+                  play: false
+                })
+                whoosh.pause();
+              }
             } else {
-              setNol({
-                ...nol,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh.pause();
             }
-          }} style={{
-            padding: 10,
-            backgroundColor: nol.status == "OPEN" ? colors.primary : nol.status == "DONE" ? colors.success : 'gray',
-            borderRadius: 10,
-            width: 60,
-          }}>
+
+          }}
+
+
+
+            style={{
+              padding: 10,
+              backgroundColor: nol.status == "OPEN" ? colors.primary : nol.status == "DONE" ? colors.success : 'gray',
+              borderRadius: 10,
+              width: 60,
+            }}>
             <Icon name={nol.play ? 'pause' : 'play'} type="ionicon" color={nol.status == "OPEN" ? colors.secondary : 'white'} />
           </TouchableOpacity>
           <Text style={{
@@ -339,25 +351,37 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$1.play) {
-              set$1({
-                ...$1,
-                play: true
-              });
-              whoosh1.play();
+
+            if ($1.status == "OPEN" || $1.status == "DONE") {
+              if (!$1.play) {
+                set$1({
+                  ...$1,
+                  play: true
+                });
+                whoosh1.play();
+              } else {
+                set$1({
+                  ...$1,
+                  play: false
+                })
+                whoosh1.pause();
+              }
             } else {
-              set$1({
-                ...$1,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh1.pause();
             }
-          }} style={{
-            padding: 10,
-            backgroundColor: $1.status == "OPEN" ? colors.primary : $1.status == "DONE" ? colors.success : 'gray',
-            borderRadius: 10,
-            width: 60,
-          }}>
+          }
+          }
+
+
+            style={{
+              padding: 10,
+              backgroundColor: $1.status == "OPEN" ? colors.primary : $1.status == "DONE" ? colors.success : 'gray',
+              borderRadius: 10,
+              width: 60,
+            }}>
             <Icon name={$1.play ? 'pause' : 'play'} type="ionicon" color={$1.status == "OPEN" ? colors.secondary : 'white'} />
           </TouchableOpacity>
           <Text style={{
@@ -436,9 +460,17 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            navigation.navigate('Petunjuk', {
-              jam: 2
-            })
+
+            if ($2.status == "OPEN" || $2.status == "DONE") {
+              navigation.navigate('Petunjuk', {
+                jam: 2
+              })
+            } else {
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
+              })
+            }
           }} style={{
             padding: 10,
             backgroundColor: $2.status == "OPEN" ? colors.primary : $2.status == "DONE" ? colors.success : 'gray',
@@ -522,19 +554,31 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$3.play) {
-              set$3({
-                ...$3,
-                play: true
-              });
-              whoosh3.play();
+
+
+            if ($3.status == "OPEN" || $3.status == "DONE") {
+              if (!$3.play) {
+                set$3({
+                  ...$3,
+                  play: true
+                });
+                whoosh3.play();
+              } else {
+                set$3({
+                  ...$3,
+                  play: false
+                })
+                whoosh3.pause();
+              }
             } else {
-              set$3({
-                ...$3,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh3.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $3.status == "OPEN" ? colors.primary : $3.status == "DONE" ? colors.success : 'gray',
@@ -617,19 +661,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$4.play) {
-              set$4({
-                ...$4,
-                play: true
-              });
-              whoosh4.play();
+
+            if ($4.status == "OPEN" || $4.status == "DONE") {
+              if (!$4.play) {
+                set$4({
+                  ...$4,
+                  play: true
+                });
+                whoosh4.play();
+              } else {
+                set$4({
+                  ...$4,
+                  play: false
+                })
+                whoosh4.pause();
+              }
             } else {
-              set$4({
-                ...$4,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh4.pause();
             }
+
+
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $4.status == "OPEN" ? colors.primary : $4.status == "DONE" ? colors.success : 'gray',
@@ -712,19 +769,30 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$5.play) {
-              set$5({
-                ...$5,
-                play: true
-              });
-              whoosh5.play();
+
+            if ($5.status == "OPEN" || $5.status == "DONE") {
+              if (!$5.play) {
+                set$5({
+                  ...$5,
+                  play: true
+                });
+                whoosh5.play();
+              } else {
+                set$5({
+                  ...$5,
+                  play: false
+                })
+                whoosh5.pause();
+              }
             } else {
-              set$5({
-                ...$5,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh5.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $5.status == "OPEN" ? colors.primary : $5.status == "DONE" ? colors.success : 'gray',
@@ -807,9 +875,22 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            navigation.navigate('Petunjuk', {
-              jam: 6
-            })
+
+
+
+            if ($6.status == "OPEN" || $6.status == "DONE") {
+              navigation.navigate('Petunjuk', {
+                jam: 6
+              })
+            } else {
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
+              })
+            }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $6.status == "OPEN" ? colors.primary : $6.status == "DONE" ? colors.success : 'gray',
@@ -892,19 +973,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$7.play) {
-              set$7({
-                ...$7,
-                play: true
-              });
-              whoosh$7.play();
+
+
+
+            if ($7.status == "OPEN" || $7.status == "DONE") {
+              if (!$7.play) {
+                set$7({
+                  ...$7,
+                  play: true
+                });
+                whoosh$7.play();
+              } else {
+                set$7({
+                  ...$7,
+                  play: false
+                })
+                whoosh$7.pause();
+              }
             } else {
-              set$7({
-                ...$7,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$7.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $7.status == "OPEN" ? colors.primary : $7.status == "DONE" ? colors.success : 'gray',
@@ -987,19 +1081,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$8.play) {
-              set$8({
-                ...$8,
-                play: true
-              });
-              whoosh$8.play();
+
+
+
+            if ($8.status == "OPEN" || $8.status == "DONE") {
+              if (!$8.play) {
+                set$8({
+                  ...$8,
+                  play: true
+                });
+                whoosh$8.play();
+              } else {
+                set$8({
+                  ...$8,
+                  play: false
+                })
+                whoosh$8.pause();
+              }
             } else {
-              set$8({
-                ...$8,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$8.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $8.status == "OPEN" ? colors.primary : $8.status == "DONE" ? colors.success : 'gray',
@@ -1082,19 +1189,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$9.play) {
-              set$9({
-                ...$9,
-                play: true
-              });
-              whoosh$9.play();
+
+
+
+            if ($9.status == "OPEN" || $9.status == "DONE") {
+              if (!$9.play) {
+                set$9({
+                  ...$9,
+                  play: true
+                });
+                whoosh$9.play();
+              } else {
+                set$9({
+                  ...$9,
+                  play: false
+                })
+                whoosh$9.pause();
+              }
             } else {
-              set$9({
-                ...$9,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$9.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $9.status == "OPEN" ? colors.primary : $9.status == "DONE" ? colors.success : 'gray',
@@ -1176,9 +1296,22 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            navigation.navigate('Petunjuk', {
-              jam: 10
-            })
+
+
+
+            if ($10.status == "OPEN" || $10.status == "DONE") {
+              navigation.navigate('Petunjuk', {
+                jam: 10
+              })
+            } else {
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
+              })
+            }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $10.status == "OPEN" ? colors.primary : $10.status == "DONE" ? colors.success : 'gray',
@@ -1260,19 +1393,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$11.play) {
-              set$11({
-                ...$11,
-                play: true
-              });
-              whoosh$11.play();
+
+
+
+            if ($11.status == "OPEN" || $11.status == "DONE") {
+              if (!$11.play) {
+                set$11({
+                  ...$11,
+                  play: true
+                });
+                whoosh$11.play();
+              } else {
+                set$11({
+                  ...$11,
+                  play: false
+                })
+                whoosh$11.pause();
+              }
             } else {
-              set$11({
-                ...$11,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$11.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $11.status == "OPEN" ? colors.primary : $11.status == "DONE" ? colors.success : 'gray',
@@ -1355,19 +1501,30 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$12.play) {
-              set$12({
-                ...$12,
-                play: true
-              });
-              whoosh$12.play();
+
+
+
+            if ($12.status == "OPEN" || $12.status == "DONE") {
+              if (!$12.play) {
+                set$12({
+                  ...$12,
+                  play: true
+                });
+                whoosh$12.play();
+              } else {
+                set$12({
+                  ...$12,
+                  play: false
+                })
+                whoosh$12.pause();
+              }
             } else {
-              set$12({
-                ...$12,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$12.pause();
             }
+
           }} style={{
             padding: 10,
             backgroundColor: $12.status == "OPEN" ? colors.primary : $12.status == "DONE" ? colors.success : 'gray',
@@ -1450,19 +1607,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$13.play) {
-              set$13({
-                ...$13,
-                play: true
-              });
-              whoosh$13.play();
+
+
+
+            if ($13.status == "OPEN" || $13.status == "DONE") {
+              if (!$13.play) {
+                set$13({
+                  ...$13,
+                  play: true
+                });
+                whoosh$13.play();
+              } else {
+                set$13({
+                  ...$13,
+                  play: false
+                })
+                whoosh$13.pause();
+              }
             } else {
-              set$13({
-                ...$13,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$13.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $13.status == "OPEN" ? colors.primary : $13.status == "DONE" ? colors.success : 'gray',
@@ -1544,19 +1714,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$14.play) {
-              set$14({
-                ...$14,
-                play: true
-              });
-              whoosh$14.play();
+
+
+
+            if ($14.status == "OPEN" || $14.status == "DONE") {
+              if (!$14.play) {
+                set$14({
+                  ...$14,
+                  play: true
+                });
+                whoosh$14.play();
+              } else {
+                set$14({
+                  ...$14,
+                  play: false
+                })
+                whoosh$14.pause();
+              }
             } else {
-              set$14({
-                ...$14,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$14.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $14.status == "OPEN" ? colors.primary : $14.status == "DONE" ? colors.success : 'gray',
@@ -1638,19 +1821,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$15.play) {
-              set$15({
-                ...$15,
-                play: true
-              });
-              whoosh$15.play();
+
+
+
+            if ($15.status == "OPEN" || $15.status == "DONE") {
+              if (!$15.play) {
+                set$15({
+                  ...$15,
+                  play: true
+                });
+                whoosh$15.play();
+              } else {
+                set$15({
+                  ...$15,
+                  play: false
+                })
+                whoosh$15.pause();
+              }
             } else {
-              set$15({
-                ...$15,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$15.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $15.status == "OPEN" ? colors.primary : $15.status == "DONE" ? colors.success : 'gray',
@@ -1732,19 +1928,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$16.play) {
-              set$16({
-                ...$16,
-                play: true
-              });
-              whoosh$16.play();
+
+
+
+            if ($16.status == "OPEN" || $16.status == "DONE") {
+              if (!$16.play) {
+                set$16({
+                  ...$16,
+                  play: true
+                });
+                whoosh$16.play();
+              } else {
+                set$16({
+                  ...$16,
+                  play: false
+                })
+                whoosh$16.pause();
+              }
             } else {
-              set$16({
-                ...$16,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$16.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $16.status == "OPEN" ? colors.primary : $16.status == "DONE" ? colors.success : 'gray',
@@ -1826,19 +2035,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$17.play) {
-              set$17({
-                ...$17,
-                play: true
-              });
-              whoosh$17.play();
+
+
+
+            if ($17.status == "OPEN" || $17.status == "DONE") {
+              if (!$17.play) {
+                set$17({
+                  ...$17,
+                  play: true
+                });
+                whoosh$17.play();
+              } else {
+                set$17({
+                  ...$17,
+                  play: false
+                })
+                whoosh$17.pause();
+              }
             } else {
-              set$17({
-                ...$17,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$17.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $17.status == "OPEN" ? colors.primary : $17.status == "DONE" ? colors.success : 'gray',
@@ -1920,19 +2142,31 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$18.play) {
-              set$18({
-                ...$18,
-                play: true
-              });
-              whoosh$18.play();
+
+
+            if ($18.status == "OPEN" || $18.status == "DONE") {
+              if (!$18.play) {
+                set$18({
+                  ...$18,
+                  play: true
+                });
+                whoosh$18.play();
+              } else {
+                set$18({
+                  ...$18,
+                  play: false
+                })
+                whoosh$18.pause();
+              }
             } else {
-              set$18({
-                ...$18,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$18.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $18.status == "OPEN" ? colors.primary : $18.status == "DONE" ? colors.success : 'gray',
@@ -2015,19 +2249,31 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$19.play) {
-              set$19({
-                ...$19,
-                play: true
-              });
-              whoosh$19.play();
+
+
+            if ($19.status == "OPEN" || $19.status == "DONE") {
+              if (!$19.play) {
+                set$19({
+                  ...$19,
+                  play: true
+                });
+                whoosh$19.play();
+              } else {
+                set$19({
+                  ...$19,
+                  play: false
+                })
+                whoosh$19.pause();
+              }
             } else {
-              set$19({
-                ...$19,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$19.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $19.status == "OPEN" ? colors.primary : $19.status == "DONE" ? colors.success : 'gray',
@@ -2110,19 +2356,31 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$20.play) {
-              set$20({
-                ...$20,
-                play: true
-              });
-              whoosh$20.play();
+
+
+            if ($20.status == "OPEN" || $20.status == "DONE") {
+              if (!$20.play) {
+                set$20({
+                  ...$20,
+                  play: true
+                });
+                whoosh$20.play();
+              } else {
+                set$20({
+                  ...$20,
+                  play: false
+                })
+                whoosh$20.pause();
+              }
             } else {
-              set$20({
-                ...$20,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$20.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $20.status == "OPEN" ? colors.primary : $20.status == "DONE" ? colors.success : 'gray',
@@ -2204,19 +2462,31 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$21.play) {
-              set$21({
-                ...$21,
-                play: true
-              });
-              whoosh$21.play();
+
+
+            if ($21.status == "OPEN" || $21.status == "DONE") {
+              if (!$21.play) {
+                set$21({
+                  ...$21,
+                  play: true
+                });
+                whoosh$21.play();
+              } else {
+                set$21({
+                  ...$21,
+                  play: false
+                })
+                whoosh$21.pause();
+              }
             } else {
-              set$21({
-                ...$21,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$21.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $21.status == "OPEN" ? colors.primary : $21.status == "DONE" ? colors.success : 'gray',
@@ -2298,19 +2568,31 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$22.play) {
-              set$22({
-                ...$22,
-                play: true
-              });
-              whoosh$22.play();
+
+
+            if ($22.status == "OPEN" || $22.status == "DONE") {
+              if (!$22.play) {
+                set$22({
+                  ...$22,
+                  play: true
+                });
+                whoosh$22.play();
+              } else {
+                set$22({
+                  ...$22,
+                  play: false
+                })
+                whoosh$22.pause();
+              }
             } else {
-              set$22({
-                ...$22,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$22.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $22.status == "OPEN" ? colors.primary : $22.status == "DONE" ? colors.success : 'gray',
@@ -2392,19 +2674,31 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$23.play) {
-              set$23({
-                ...$23,
-                play: true
-              });
-              whoosh$23.play();
+
+
+            if ($23.status == "OPEN" || $23.status == "DONE") {
+              if (!$23.play) {
+                set$23({
+                  ...$23,
+                  play: true
+                });
+                whoosh$23.play();
+              } else {
+                set$23({
+                  ...$23,
+                  play: false
+                })
+                whoosh$23.pause();
+              }
             } else {
-              set$23({
-                ...$23,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$23.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $23.status == "OPEN" ? colors.primary : $23.status == "DONE" ? colors.success : 'gray',
@@ -2486,19 +2780,32 @@ export default function Home({ navigation }) {
 
         }}>
           <TouchableOpacity onPress={() => {
-            if (!$24.play) {
-              set$24({
-                ...$24,
-                play: true
-              });
-              whoosh$24.play();
+
+
+
+            if ($24.status == "OPEN" || $24.status == "DONE") {
+              if (!$24.play) {
+                set$24({
+                  ...$24,
+                  play: true
+                });
+                whoosh$24.play();
+              } else {
+                set$24({
+                  ...$24,
+                  play: false
+                })
+                whoosh$24.pause();
+              }
             } else {
-              set$24({
-                ...$24,
-                play: false
+              showMessage({
+                'type': 'danger',
+                'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
               })
-              whoosh$24.pause();
             }
+
+
+
           }} style={{
             padding: 10,
             backgroundColor: $24.status == "OPEN" ? colors.primary : $24.status == "DONE" ? colors.success : 'gray',
@@ -2564,9 +2871,12 @@ export default function Home({ navigation }) {
         {/* materi $24*/}
 
       </ScrollView>
+
+
       <TouchableOpacity onPress={() => {
         Alert.alert('Rasulullah Habits', 'Kami senang jika Anda mau menyapa kami. Sampaikan pertanyaan Anda melalui whatsapp berikut ini: 089-89-123-123')
       }} style={{
+
         flexDirection: 'row',
         padding: 10,
         backgroundColor: colors.secondary,
@@ -2581,6 +2891,29 @@ export default function Home({ navigation }) {
           color: colors.primary
         }}>Bantuan</Text>
       </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => {
+        storeData('user', null);
+
+        navigation.replace('Login');
+      }} style={{
+
+        flexDirection: 'row',
+        padding: 10,
+        backgroundColor: colors.primary,
+        justifyContent: 'center',
+        alignItems: 'center'
+      }}>
+        <Icon type="ionicon" name="log-out-outline" color={colors.white} />
+        <Text style={{
+          fontFamily: fonts.secondary[600],
+          fontSize: windowWidth / 20,
+          left: 10,
+          color: colors.white
+        }}>Keluar</Text>
+      </TouchableOpacity>
+
+
     </SafeAreaView >
   )
 }

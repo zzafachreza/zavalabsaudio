@@ -22,6 +22,7 @@ import MenuPasutriAdd from './MenuPasutriAdd';
 import MenuPendidikanAdd from './MenuPendidikanAdd';
 import MenuPelatihanAdd from './MenuPelatihanAdd';
 import Petunjuk from './Petunjuk';
+import Register from './Register';
 
 
 
@@ -38,6 +39,7 @@ export {
   Home,
   Petunjuk,
   Login,
+  Register,
   MenuOrangTuaAdd,
   MenuOrangTuaEdit,
   MenuOrangTua,
