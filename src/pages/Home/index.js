@@ -2831,35 +2831,44 @@ export default function Home({ navigation }) {
             }}>
 
               <Text onPress={() => {
-                Alert.alert(
-                  "Jazakumullah Khair",
-                  "Suatu kehormatan bagi kami bisa membersamai Anda hingga materi terakhir. Khusus bagi Anda yang masih bersemangat, Alhamdulillah! Karena ada cerita-cerita tentang Rasulullah menunggu dalam kajian lanjutan di sesi berikutnya. Silakan menghubungi admin kajian online melalui whatsapp.",
-                  [
-                    // {
-                    //   text: "TIDAK",
-                    //   onPress: () => console.log("Cancel Pressed"),
-                    //   style: "cancel"
-                    // },
-                    {
-                      text: "OK", onPress: () => {
 
-                        //   untuk jenis yang next nya 
-                        setBuka(true);
-                        set$24({
-                          ...$24,
-                          status: 'DONE'
-                        })
-                        storeData('$24', {
-                          play: false,
-                          url: 'https://zavalabs.com/islamic/Materi%2024.mp3',
-                          nama: 'JAM 24',
-                          status: 'DONE',
-                        })
+                if ($24.status == "OPEN" || $24.status == "DONE") {
+                  Alert.alert(
+                    "Jazakumullah Khair",
+                    "Suatu kehormatan bagi kami bisa membersamai Anda hingga materi terakhir. Khusus bagi Anda yang masih bersemangat, Alhamdulillah! Karena ada cerita-cerita tentang Rasulullah menunggu dalam kajian lanjutan di sesi berikutnya. Silakan menghubungi admin kajian online melalui whatsapp.",
+                    [
+                      // {
+                      //   text: "TIDAK",
+                      //   onPress: () => console.log("Cancel Pressed"),
+                      //   style: "cancel"
+                      // },
+                      {
+                        text: "OK", onPress: () => {
 
+                          //   untuk jenis yang next nya 
+                          setBuka(true);
+                          set$24({
+                            ...$24,
+                            status: 'DONE'
+                          })
+                          storeData('$24', {
+                            play: false,
+                            url: 'https://zavalabs.com/islamic/Materi%2024.mp3',
+                            nama: 'JAM 24',
+                            status: 'DONE',
+                          })
+
+                        }
                       }
-                    }
-                  ]
-                );
+                    ]
+                  );
+                } else {
+                  showMessage({
+                    'type': 'danger',
+                    'message': 'Maaf silahkan selesaikan dulu materi sebelumnya'
+                  })
+                }
+
               }} style={{
                 fontFamily: fonts.secondary[600],
                 fontSize: windowWidth / 20,
